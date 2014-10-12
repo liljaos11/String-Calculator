@@ -14,13 +14,18 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add(""));
 	}
 
-		@Test
+	@Test
 	public void testOneNumber() {
 		assertEquals(1, Calculator.add("1"));
 	}
 
-			@Test
+	@Test
 	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
+	}
+
+	@Test
+	public void testTenNumbers() {
+		assertEquals(47, Calculator.add("6,1,2,5,8,7,9,3,1,5"));
 	}
 }
