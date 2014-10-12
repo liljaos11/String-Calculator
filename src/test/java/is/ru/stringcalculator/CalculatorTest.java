@@ -28,4 +28,9 @@ public class CalculatorTest {
 	public void testTenNumbers() {
 		assertEquals(47, Calculator.add("6,1,2,5,8,7,9,3,1,5"));
 	}
+
+	@Test
+	public void testNewLineDelimiter() {
+		assertEquals(6, Calculator.add("1\n2,3"));
+	}
 }
