@@ -7,8 +7,12 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",")){	
-			return Integer.parseInt(text.split(",")[0])+Integer.parseInt(text.split(",")[1]);
+			return splitString(text);
 		}
 		else return Integer.parseInt(text);
+	}
+	
+	private static int splitString(String s){		
+		return Integer.parseInt(s.split(",")[0])+Integer.parseInt(s.split(",")[1]);
 	}
 }
