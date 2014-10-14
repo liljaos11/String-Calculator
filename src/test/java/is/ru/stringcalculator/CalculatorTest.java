@@ -43,4 +43,9 @@ public class CalculatorTest {
 	public void testStringWithSemicolonAsDelimiter() {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+
+	@Test
+	public void testStringWithHashtagAsDelimiter() {
+		assertEquals(3, Calculator.add("//#\n1#2"));
+	}
 }
