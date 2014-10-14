@@ -34,8 +34,13 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
-		@Test
+	@Test
 	public void testMultipleNewLineDelimiter() {
 		assertEquals(32, Calculator.add("1\n2\n3\n9\n3\n1,5\n8"));
+	}
+
+	@Test
+	public void testStringWithSemicolonAsDelimiter() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 }
