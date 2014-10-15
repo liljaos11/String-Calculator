@@ -12,24 +12,24 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.startsWith("//[")){
-			StringBuilder symbol = new StringBuilder();
+			StringBuffer symbol = new StringBuffer();
 			List<String> symbolList = new ArrayList<String>();
-			int count, symbolCount=0;
+			int count;
 			for (count = 3; count < text.length();count++) {
 				if(text.charAt(count)=='\n') break;
 				else if(text.charAt(count)!='['&&text.charAt(count)!=']') symbol.append(text.charAt(count));
 				if(text.charAt(count+1)==']'){
 					symbolList.add(symbol.toString());
-					symbol.setLength(0);
-					symbolCount++;
+					symbol.delete(0, symbol.length());
+					count++;
 				}
 			}			
-			StringBuilder s = new StringBuilder();
+			StringBuffer s = new StringBuffer();
 			//Get just the part of the string after /n
-			s.append(text.substring(count+1, text.length()));
+			s.append(text.substring(++count, text.length()));
 			for(int i = 0; i<symbolList.size();i++){
 				String t = s.toString().replace(symbolList.get(i), ",");
-				s.setLength(0);
+				s.delete(0, s.length());
 				s.append(t);
 			}
 			
@@ -64,7 +64,7 @@ public class Calculator {
 				if(!(Integer.valueOf(intList[i])>1000)) sum = sum+Integer.parseInt(intList[i]);
 			}
 			if(! negativeList.isEmpty()){
-				StringBuilder sb = new StringBuilder();
+				StringBuffer sb = new StringBuffer();
 				sb.append("Negatives not allowed: "+negativeList.get(0));
 				for(int i=1; i<negativeList.size();i++){
 					sb.append(","+negativeList.get(i));
