@@ -2,6 +2,8 @@ package is.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
 
 public class CalculatorTest {
 
@@ -48,4 +50,20 @@ public class CalculatorTest {
 	public void testStringWithHashtagAsDelimiter() {
 		assertEquals(3, Calculator.add("//#\n1#2"));
 	}
+/*
+	@Test
+	public void testNegativeNumberException() {
+		assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+	}*/
+
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+
+ 	@Test
+	public void getNameWithNullValue() {
+	thrown.expect(IllegalArgumentException.class);
+	thrown.expectMessage("Negatives not allowed: -1");
+	Calculator obj = new Calculator();
+	obj.add("-1,2");
+}
 }
