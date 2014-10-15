@@ -5,11 +5,20 @@ import java.util.List;
 
 public class Calculator {
 	
-	//Takes in a string and adds the numbers in it
 	public static int add(String text){
 		String[] intList;
 		if(text ==""){
 			return 0;
+		}
+		else if(text.startsWith("//[")){
+			StringBuilder symbol = new StringBuilder();
+			int count;
+			for (count = 3; count < text.length();count++) {
+				if(text.charAt(count)==']') break;
+				symbol.append(text.charAt(count));
+			}
+			String s = text.substring(count+2, text.length()).replace(symbol, ",");
+			intList = splitString(s);
 		}
 		else if(text.startsWith("//"))	//If string has some delimiter other than ,
 			intList = splitStringOnSymbol(text.substring(4), Character.toString(text.charAt(2)));
